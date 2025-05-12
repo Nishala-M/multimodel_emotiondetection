@@ -1,101 +1,97 @@
 
-# Emotion-Aware Speech Recognition
+# Emotion-Aware Speech Recognition (Jupyter Notebook)
 
-This Python project performs **emotion-aware speech recognition** using a combination of [OpenAI Whisper](https://github.com/openai/whisper) for transcription and **SVM-based emotion detection** using audio features (MFCC + pitch).
+This project uses a Jupyter Notebook (`multimodelemotiondetection.ipynb`) to perform **emotion-aware speech recognition** using OpenAI's Whisper model for transcription and an SVM classifier for basic emotion detection based on audio features.
 
 ---
 
 ## 🚀 Features
 
 - 🎙️ Transcribes speech from `.mp4` files using Whisper
-- 📊 Extracts MFCC and pitch-based audio features
-- 😃 Classifies speaker emotion (happy, sad, angry, neutral)
+- 📊 Extracts MFCC and pitch-based audio features using `librosa`
+- 😃 Detects basic emotions: happy, sad, angry, neutral
 - 🎞️ Converts video/audio files (MP4) to WAV format for processing
 
 ---
 
 ## 📦 Requirements
 
-Make sure you have Python 3.7+ installed. Install the required libraries:
+Before running the notebook, make sure to install the following dependencies:
 
 ```bash
 pip install openai-whisper librosa scikit-learn moviepy numpy
 ```
 
-Install `ffmpeg` (required by Whisper and moviepy):
+Also, ensure `ffmpeg` is installed:
 
 - **Ubuntu/Debian**:
   ```bash
   sudo apt install ffmpeg
   ```
-- **macOS (Homebrew)**:
+- **macOS** (Homebrew):
   ```bash
   brew install ffmpeg
   ```
 - **Windows**:
-  Download from: https://ffmpeg.org/download.html and add it to PATH.
+  Download from: https://ffmpeg.org/download.html and add it to your system PATH.
 
 ---
 
 ## 🧠 How It Works
 
-1. **convert_mp4_to_wav**: Extracts audio from an MP4 file using MoviePy.
-2. **transcribe_audio**: Transcribes the audio using Whisper (`base` model).
-3. **extract_audio_features**: Uses `librosa` to compute MFCC and pitch features.
-4. **train_emotion_classifier**: Simulates training of an SVM emotion classifier.
-5. **classify_emotion**: Predicts the emotional tone of the speaker.
+1. **Convert Audio**: Extracts audio from an `.mp4` file to `.wav` using MoviePy.
+2. **Speech Recognition**: Transcribes audio using Whisper (`base` model).
+3. **Feature Extraction**: Extracts MFCC + pitch features with `librosa`.
+4. **Emotion Detection**: A simple SVM classifier predicts the speaker's emotion.
 
 ---
 
-## 📁 File Structure
+## 📄 File Structure
 
 ```
 emotion_aware_speech_recognition/
-├── main.py         # All processing code
-└── README.md       # Project documentation
+├── multimodelemotiondetection.ipynb  # Main notebook
+└── README.md                         # Project documentation
 ```
 
 ---
 
-## 🧪 Example Usage
+## 🧪 How to Use
 
-Ensure `main.py` contains the following at the bottom:
+1. Open the notebook:
+
+```bash
+jupyter notebook multimodelemotiondetection.ipynb
+```
+
+2. Set the path to your `.mp4` audio/video file:
 
 ```python
 audio_path = "/content/sample.mp4"
 emotion_aware_speech_recognition(audio_path)
 ```
 
-Run the script:
-
-```bash
-python main.py
-```
-
-Expected output:
-
-```
-Transcription: Hello, how are you?
-Detected Emotion: happy
-Language Detected: en
-```
+3. Run all cells and observe the outputs:
+   - Transcription
+   - Detected Emotion
+   - Detected Language
 
 ---
 
 ## ⚠️ Notes
 
-- The SVM classifier uses randomly generated features for demo purposes.
-- For real use, train with labeled emotion data (e.g., RAVDESS, CREMA-D datasets).
-- Whisper supports multilingual audio and automatically detects language.
+- The emotion classifier is trained on **synthetic data** as a placeholder.
+- For production, use real datasets like RAVDESS, CREMA-D, or Emo-DB.
+- Whisper automatically detects the language of the audio.
 
 ---
 
 ## 📬 Author
 
-Created with ❤️ using Python, OpenAI Whisper, and Librosa.
+Created with ❤️ using Python, Whisper, Librosa, and Scikit-learn.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License – feel free to use, modify, and distribute it.
+This project is licensed under the MIT License. You are free to use, modify, and distribute it.
